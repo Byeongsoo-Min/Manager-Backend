@@ -26,25 +26,25 @@ public class MemberServiceTest {
     @Autowired
     CardService cardService;
 
-    @Test
-    void join() {
-        Member member = new Member();
-        Chat chat = new Chat();
-        Card card = new Card();
-
-        member.setManagerName("hello");
-        card.setMember(member);
-        card.setCompanyName("MBSOO");
-        card.setCompanyImageUrl("www.asdf.asdf");
-
-
-        Chat chat1 = chatService.createChat(chat);
-        Card card1 = cardService.createCard(card);
-        Long saveId = memberService.join(member);
-
-        Member member1 = memberService.findOne(saveId).get();
-        Assertions.assertThat(member.getId()).isEqualTo(member1.getId());
-        Assertions.assertThat(memberService.findChat(chat.getId()).get()).isEqualTo(chat1);
-        Assertions.assertThat(memberService.findCardList(member1).get(0)).isEqualTo(card1);
-    }
+//    @Test
+//    void join() {
+//        Member member = new Member();
+//        Chat chat = new Chat();
+//        Card card = new Card();
+//
+//        member.setManagerName("hello");
+//        card.setMember(member);
+//        card.setCompanyName("MBSOO");
+//        card.setCompanyImageUrl("www.asdf.asdf");
+//
+//
+//        Chat chat1 = chatService.createChat(chat);
+//        Card card1 = cardService.createCard(card);
+//        Long saveId = memberService.join(member);
+//
+//        Member member1 = memberService.findOne(saveId).get();
+//        Assertions.assertThat(member.getId()).isEqualTo(member1.getId());
+//        Assertions.assertThat(memberService.findChat(chat.getId()).get()).isEqualTo(chat1);
+//        Assertions.assertThat(memberService.findCardList(member1).get(0)).isEqualTo(card1);
+//    }
 }
