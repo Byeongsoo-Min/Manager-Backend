@@ -4,6 +4,7 @@ import Manager.spring.domain.Card;
 import Manager.spring.domain.Chat;
 import Manager.spring.domain.Member;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -28,6 +29,22 @@ public class JPAMemberRepository implements MemberRepository {
         Member member = em.find(Member.class, id);
         return Optional.ofNullable(member);
     }
+
+    @Override
+    public Optional<Member> findByName(String managerName) {
+        System.out.println("managerName = " + managerName);
+        try {
+//            Member member = em.createQuery("select m from Member m where m.managerName = :managerName", Member.class)
+//                    .setParameter("managerName", managerName)
+//                    .getSingleResult(); // getSingleResult() 사용
+            Member member = em.find(Member.class, 11);
+            System.out.println("member = " + member);
+            return Optional.ofNullable(member);
+        } catch (NoResultException e) {
+            return Optional.empty(); // 결과가 없으면 Optional.empty() 반환
+        }
+    }
+
 
     @Override
     public List<Member> findAll() {

@@ -31,6 +31,9 @@ public class MemberService {
         return memberRepository.findById(memberId);
     }
 
+    public Optional<Member> findOneByName(String managerName) {
+        return memberRepository.findByName(managerName); }
+
     public Optional<Chat> findChat(Long chatId) {
         return memberRepository.findChat(chatId);
     }

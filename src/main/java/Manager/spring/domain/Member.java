@@ -14,9 +14,13 @@ public class Member { // Member 구현체
     private String managerName;
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Card> cardList = new ArrayList<>();
-    @OneToOne
-    @JoinColumn(name = "chat_id")
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "chat_id", referencedColumnName = "id")
     private Chat chat;
+
+    public Member() {
+        this.chat = new Chat();
+    }
 
     public Long getId() {
         return id;
