@@ -1,10 +1,10 @@
 package Manager.spring.domain;
 
+import Manager.spring.Dto.CardDto;
 import jakarta.persistence.*;
 
 @Entity
 public class Card {
-
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "companyName")
@@ -54,6 +54,13 @@ public class Card {
     }
 
     public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public void setCardEntity(CardDto cardDto, Member member) {
+        this.companyImageUrl = cardDto.getCompanyImageUrl();
+        this.companyName = cardDto.getCompanyName();
+        this.companyNumber = cardDto.getCompanyNumber();
         this.member = member;
     }
 }
