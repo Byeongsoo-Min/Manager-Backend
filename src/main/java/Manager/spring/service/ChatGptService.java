@@ -24,5 +24,5 @@ public interface ChatGptService {
 
     String storeChat(Map<String, Object> response, Long member_id);
 
-    String summaryChat(List<ChatRequestMsgDto> chatRequestMsgDtoList);
+    List<ChatRequestMsgDto> summaryChat(List<ChatRequestMsgDto> chatRequestMsgDtoList);
 }
