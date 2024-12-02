@@ -47,8 +47,8 @@ public class MemberController {
 
         response.put("status", "success");
         response.put("message", "User Created Successfully");
-        response.put("UserID", member_id);
-        response.put("Manager_name", manager_name);
+        response.put("member_id", member_id);
+        response.put("manager_name", manager_name);
 
         return response;
     }
