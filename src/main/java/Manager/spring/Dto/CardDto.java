@@ -1,6 +1,7 @@
 package Manager.spring.Dto;
 
 
+import Manager.spring.domain.Card;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -9,7 +10,7 @@ public class CardDto {
     private String companyName;
     private String companyNumber;
     private String companyImageUrl;
-
+    private Long cardId;
 
     public CardDto() {
 
@@ -27,6 +28,15 @@ public class CardDto {
         this.memberId = memberId;
     }
 
+    public static CardDto fromEntity(Card card) {
+        CardDto cardDto = new CardDto();
+        cardDto.setCompanyName(card.getCompanyName());
+        cardDto.setCompanyNumber(card.getCompanyNumber());
+        cardDto.setCompanyImageUrl(card.getCompanyImageUrl());
+        cardDto.setMemberId(card.getMember().getId());
+        cardDto.setCardId(card.getId());
+        return cardDto;
+    }
     public Long getMemberId() {
         return memberId;
     }
@@ -57,5 +67,13 @@ public class CardDto {
 
     public void setCompanyImageUrl(String companyImageUrl) {
         this.companyImageUrl = companyImageUrl;
+    }
+
+    public Long getCardId() {
+        return cardId;
+    }
+
+    public void setCardId(Long cardId) {
+        this.cardId = cardId;
     }
 }
