@@ -31,8 +31,8 @@ public class ChatServiceTest {
     @Autowired
     UserChatRepository userChatRepository;
 
-    @Test
-    void create() {
+//    @Test
+//    void create() {
 //        Chat chat = new Chat();
 //
 //        GptChat gpt = new GptChat();
@@ -56,10 +56,10 @@ public class ChatServiceTest {
 //
 //        Assertions.assertThat(chatService.getGptMessages(chat.getId())).isEqualTo(gptChatRepository.findByChatId(chat.getId()));
 //        Assertions.assertThat(chatService.getUserMessages(chat.getId())).isEqualTo(userChatRepository.findByChatId(chat.getId()));
-    }
+//    }
 
-    @Test
-    void multipleChatting() {
+//    @Test
+//    void multipleChatting() {
 //        Chat chat = new Chat();
 //
 //        GptChat gpt1 = new GptChat();
@@ -124,5 +124,5 @@ public class ChatServiceTest {
 //
 //        Assertions.assertThat(chatService.getGptMessages(chat.getId())).isEqualTo(gptChatRepository.findByChatId(chat.getId()));
 //        Assertions.assertThat(chatService.getUserMessages(chat.getId())).isEqualTo(userChatRepository.findByChatId(chat.getId()));
-    }
+//    }
 }

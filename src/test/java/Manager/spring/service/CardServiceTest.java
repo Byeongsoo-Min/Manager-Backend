@@ -23,8 +23,8 @@ public class CardServiceTest {
     @Autowired
     MemberRepository memberRepository;
 
-    @Test
-    void create() {
+//    @Test
+//    void create() {
 //        Card card = new Card();
 //        Member member = new Member();
 //
@@ -38,5 +38,5 @@ public class CardServiceTest {
 //
 //        System.out.println("companyNumber = " + memberRepository.findCardList(member).get(0).getCompanyNumber());
 //        Assertions.assertThat(card).isEqualTo(memberRepository.findCardList(member).get(0));
-    }
+//    }
 }
