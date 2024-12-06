@@ -26,7 +26,8 @@ public class ChatGptController {
     public ResponseEntity<Map<String, Object>> selectPrompt(@RequestBody ChatCompletionDto chatCompletionDto) {
         log.debug("param :: " + chatCompletionDto.toString());
         Map<String, Object> result = chatGptService.prompt(chatCompletionDto);
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        Map<String, Object> response = chatGptService.getMessageFromChat(result);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 }

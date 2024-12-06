@@ -25,4 +25,6 @@ public interface ChatGptService {
     String storeChat(Map<String, Object> response, Long member_id);
 
     List<ChatRequestMsgDto> summaryChat(List<ChatRequestMsgDto> chatRequestMsgDtoList);
+
+    Map<String, Object> getMessageFromChat(Map<String, Object> response);
 }

@@ -13,6 +13,7 @@ import Manager.spring.repository.MemberRepository;
 import Manager.spring.repository.UserChatRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.validation.constraints.Null;
 import lombok.extern.slf4j.Slf4j;
@@ -135,6 +136,8 @@ public class ChatGptServiceImpl implements ChatGptService{
         return content;
     }
 
+
+
     @Override
     public String storeChat(Map<String, Object> response, Long member_id) {
         List<Map<String, Object>> choices = (List<Map<String, Object>>) response.get("choices");
@@ -189,5 +192,36 @@ public class ChatGptServiceImpl implements ChatGptService{
         summarizeList.add(summarizeUserDto);
         summarizeList.add(summarizeGptDto);
         return summarizeList;
+    }
+
+    @Override
+    public Map<String, Object> getMessageFromChat(Map<String, Object> response) {
+        try {
+            // Jackson ObjectMapper 생성
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            String json = objectMapper.writeValueAsString(response);
+            // JSON 문자열을 JsonNode로 변환
+            JsonNode rootNode = objectMapper.readTree(json);
+
+            // content 값 추출
+            String content = rootNode
+                    .path("choices")       // choices 배열
+                    .get(0)               // 첫 번째 요소
+                    .path("message")      // message 객체
+                    .path("content")      // content 필드
+                    .asText();            // 값 가져오기
+
+            // Map 생성 및 데이터 저장
+            Map<String, Object> responseMap = new HashMap<>();
+            responseMap.put("content", content);
+
+            // 결과 출력
+            return responseMap;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return response;
     }
 }
